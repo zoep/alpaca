@@ -6,7 +6,7 @@ MLFILES=Hashcons.ml Identifier.ml Error.ml Types.ml Pretty_print.ml Typeinf.ml S
    Final.ml CodeGen.ml Peephole.ml EmitMasm.ml Parser.ml Main.ml
 MLIFILES=Hashcons.mli Identifier.mli Error.mli Types.mli Pretty_print.mli Typeinf.mli Symbol.mli \
    SymbTypes.mli Lexer.mli AstTypes.mli Quads.mli Cfg.mli Local.mli Final.mli Ast.mli Parser.mli \
-   EmitMasm.mli Intermediate.mli Optimizations.mli Peephole.mli Types.mli CodeGen.mli
+   EmitMasm.mli Intermediate.mli Optimizations.mli Peephole.mli CodeGen.mli
 
 CMOFILES=$(patsubst %.ml,%.cmo,$(MLFILES))
 CMIFILES=$(patsubst %.ml,%.cmi,$(MLFILES))

@@ -92,8 +92,8 @@ let main =
         let ir = Cfg.CFG.quads_of_cfg cfg in
         let () =  match default_config.quads with
           | true -> 
-              let chan = (Format.formatter_of_out_channel (force files.cout)) in 
-            Quads.printQuads chan ir
+            let chan = (Format.formatter_of_out_channel (force files.cout)) in 
+              Quads.printQuads chan ir
           | false -> 
             let final = CodeGen.codeGen ir outer_entry in
             let final = match default_config.opt with
