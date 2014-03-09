@@ -43,7 +43,7 @@ let rec lookup_solved tvar =
       begin
         match (try Some (Hashtbl.find solved_types tvar) 
                with Not_found -> None) with
-          | None -> internal "Failed to locate inferred type\n"
+          | None -> raise (UnsolvedTyVar tvar)
           | Some typ -> 
             begin
               match (try Some (checkType typ) 
@@ -241,6 +241,7 @@ let unify c =
     | (typ1, typ2) :: lst -> raise (UnifyError (typ1,  typ2))
   in
   let solved = unifyAux c [] [] [] [] [] in
-    if (debug_typeinf) then print_constraints solved;
+    if (debug_typeinf) then 
+      begin print_constraints c; print_constraints solved end;
     add_solved_table solved;
     solved 

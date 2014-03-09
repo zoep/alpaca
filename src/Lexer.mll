@@ -4,7 +4,6 @@ open Lexing
 open Types
 
 exception EOF of string
-exception MutilineString of string 
 
 let incr_linenum lexbuf =
   let pos = lexbuf.lex_curr_p in

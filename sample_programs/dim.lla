@@ -1,3 +1,4 @@
 let main =
 let mutable a[3,4,2] in
-dim 1 a
+  a[1,1,1]:=1;
+  dim 5 a

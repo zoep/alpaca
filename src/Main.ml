@@ -75,7 +75,8 @@ let read_args () =
 let main =
   let () = read_args () in
   let files = open_files () in
-  let lexbuf = Lexing.from_channel (force files.cin) in
+  let lexbuf = Lexing.from_channel (force files.cin) 
+  in
     try
       let ast = Parser.program Lexer.lexer lexbuf in
       let (solved, outer_entry, library_funs) = Ast.walk_program ast in
@@ -110,6 +111,9 @@ let main =
       | Parsing.Parse_error ->
         Printf.eprintf "Line %d: syntax error\n"
           (lexbuf.Lexing.lex_curr_p.Lexing.pos_lnum);
+        exit 1
+      | Lexer.EOF str  ->
+        error "Line %d: %s" (lexbuf.Lexing.lex_curr_p.Lexing.pos_lnum) str;
         exit 1
       | Symbol.DuplicateTypeDef ty -> 
         error "Type %s is declared more than once" ty;
@@ -153,4 +157,3 @@ let main =
       | Ast.NewArray ->
         error "Cannot allocate array with new";
         exit 2
-

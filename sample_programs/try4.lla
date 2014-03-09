@@ -1,6 +1,6 @@
 let g x = 4 + x
 
 let main =
-let mutable f in
+let mutable f
 f := g;
 !f 5

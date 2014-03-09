@@ -146,7 +146,7 @@ and walk_def t = match t.def with
             closeScope ();
             hideScope !currentScope false;
             t.def_entry <- Some p;
-            (new_ty, e.expr_typ) :: constraints
+            (new_ty, e.expr_typ) :: (e.expr_typ, T_Nofun) :: constraints
     end
   | D_Mut (id, ty) ->     
     let new_ty = refresh ty in
@@ -232,7 +232,7 @@ and walk_recdef t = match t.def with
           let _ = Stack.pop function_stack in
             closeScope ();
             t.def_entry <- Some p; 
-            (new_ty, e.expr_typ) :: constraints
+            (new_ty, e.expr_typ) :: (e.expr_typ, T_Nofun) :: constraints
     end
   | D_Mut (id, t) -> raise (RecDef "Mutable")
   | D_Array (id, t, l)  -> raise (RecDef "Array")  
