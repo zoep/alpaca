@@ -6,10 +6,10 @@ Compiler project for NTUA compilers course.
 The language scpecification can be found [here](http://courses.softlab.ntua.gr/compilers/2012a/llama2012.pdf) in greek.
 
 
-Llama is a functional programing language, inspired from Caml, featuring:
+Llama is a functional programing language, inspired by Caml, featuring:
 
 * Type Inference 
-* High order functions
+* Higher order functions
 * User defined data types
 * Imperative features: destructive arrays, mutable variables, while and for loops
 
